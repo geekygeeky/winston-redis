@@ -1,0 +1,25 @@
+{
+  "name": "@winston/redis",
+  "version": "1.0.0",
+  "description": "A logger library that integrates Winston with Redis for centralized logging",
+  "main": "src/logger.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geekygeeky/winston-redis.git"
+  },
+  "keywords": [
+    "winston",
+    "logger",
+    "redis",
+    "logging"
+  ],
+  "author": "GeekyGeeky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geekygeeky/winston-redis/issues"
+  },
+  "homepage": "https://github.com/geekygeeky/winston-redis#readme"
+}
