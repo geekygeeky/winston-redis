@@ -1,6 +1,6 @@
 import winston, { Logger as WinstonLogger, transports } from "winston";
 import { type RedisOptions } from "ioredis";
-import { RedisTransport } from "./RedisTransport";
+import { RedisTransport } from "./RedisTransport.ts";
 import assert from "assert";
 
 // Logger configuration options
@@ -10,6 +10,14 @@ interface LoggerOptions {
   redisOptions?: RedisOptions;
   redisKey?: string;
   level?: string;
+}
+
+export interface PaginatedLogResponse {
+  page: number;
+  limit: number;
+  totalCount: number;
+  totalPages: number;
+  logs: any[];
 }
 
 export class RedisLogger {
@@ -86,7 +94,7 @@ export class RedisLogger {
    * @param page The current page number (1-indexed)
    * @param limit Number of logs per page
    */
-  async getPaginatedLogs(page = 1, limit = 20) {
+  async getPaginatedLogs(page = 1, limit = 20): Promise<PaginatedLogResponse> {
     assert(this.redisEnabled, "Redis must be enabled to fetch logs");
 
     const redis = this.getRedisTransport()?.getRedisInstance();

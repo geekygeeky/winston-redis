@@ -1,3 +1,10 @@
+/*
+ * RedisTransport.ts: A logger library that integrates Winston with Redis for centralized logging.
+ *
+ * (C) 2025, Olushola O.
+ *
+ */
+
 import Transport from "winston-transport";
 import Redis, { type RedisOptions } from "ioredis";
 
