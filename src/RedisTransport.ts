@@ -41,9 +41,8 @@ export class RedisTransport extends Transport {
   log(info: any, callback: () => void) {
     setImmediate(() => this.emit("logged", info));
 
-    const { level, message, stack, meta = {}, ...rest } = info;
+    const { level, message, stack, ...meta } = info;
 
-    // Handle stack trace if available
     const stackLines =
       stack && typeof stack === "string"
         ? stack
@@ -52,6 +51,7 @@ export class RedisTransport extends Transport {
             .map((line: any) => line.trim())
         : stack;
 
+    // Add stack lines to meta if available
     if (stackLines) {
       meta.stack = stackLines;
     }
@@ -61,7 +61,6 @@ export class RedisTransport extends Transport {
       message,
       timestamp: new Date().toISOString(),
       meta: Object.keys(meta).length ? JSON.stringify(meta, null, 2) : null,
-      ...rest,
     };
 
     this.redis.lpush(this.key, JSON.stringify(entry));
