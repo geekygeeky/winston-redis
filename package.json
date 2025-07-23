@@ -1,11 +1,13 @@
 {
-  "name": "@winston/redis",
+  "name": "@geekygeeky/winston-redis",
   "version": "1.0.0",
   "description": "A logger library that integrates Winston with Redis for centralized logging",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.test.ts"
+    "build": "tsc",
+    "test": "mocha -r ts-node/register test/**/*.test.ts",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,7 @@
     "redis",
     "logging"
   ],
-  "author": "GeekyGeeky",
+  "author": "Olushola O.",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/geekygeeky/winston-redis/issues"
