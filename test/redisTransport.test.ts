@@ -1,4 +1,4 @@
-import { RedisTransport } from "../src/RedisTransport";
+import { RedisTransport } from "../src/RedisTransport.ts";
 import Redis from "ioredis";
 import sinon from "sinon";
 import { expect } from "chai";
